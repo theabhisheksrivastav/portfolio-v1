@@ -1,0 +1,20 @@
+---
+const { title = "My Portfolio", description = "Welcome to my site" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <title>{title}</title>
+  </head>
+  <body class="font-sans transition-colors duration-300 bg-[var(--color-primary)] text-[var(--color-secondary)]">
+    
+
+    <main class="flex flex-col md:flex-row">
+      <slot />
+    </main>
+
+  </body>
+</html>

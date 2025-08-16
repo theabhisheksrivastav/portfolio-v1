@@ -1,0 +1,50 @@
+<aside class="hidden md:flex items-center flex-col w-64 p-6 min-h-screen bg-[var(--accent-primary)] text-[var(--color-secondary)]">
+  <div class="w-24 h-24 rounded-full border-4 border-[var(--accent-secondary)] mb-4 bg-cover bg-center" style="background-image: var(--accent-img);"></div>
+  <h1 class="text-xl font-bold">Abhishek Srivastav</h1>
+  <p class="text-sm opacity-80">Software Engineer</p>
+
+  <nav class="mt-6 flex items-center flex-col gap-2 w-full">
+    <a href="#about" class="px-3 py-2 rounded hover:opacity-80 transition">About Me</a>
+    <a href="#portfolio" class="px-3 py-2 rounded hover:opacity-80 transition">Portfolio</a>
+    <a href="#services" class="px-3 py-2 rounded hover:opacity-80 transition">Services</a>
+    <a href="#resume" class="px-3 py-2 rounded hover:opacity-80 transition">Resume</a>
+    <a href="#blog" class="px-3 py-2 rounded hover:opacity-80 transition">Blog</a>
+    <a href="#contact" class="px-3 py-2 rounded hover:opacity-80 transition">Contact</a>
+
+    <div class="flex items-center mt-4">
+  <label for="layout-switch" class="relative inline-flex items-center cursor-pointer">
+    <!-- hidden checkbox -->
+    <input type="checkbox" id="layout-switch" class="sr-only peer">
+    
+    <!-- background track -->
+    <div class="w-12 h-6 bg-gray-300 rounded-full shadow-inner transition-colors duration-300 ease-in-out peer-checked:bg-gray-800"></div>
+    
+    <!-- toggle knob -->
+    <div class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow transform transition-transform duration-300 ease-in-out peer-checked:translate-x-6"></div>
+  </label>
+  <span class="ml-3 text-sm text-[var(--color-secondary)]">Dark Mode</span>
+</div>
+  </nav>
+</aside>
+<script>
+  const html = document.documentElement;
+  const switchInput = document.getElementById("layout-switch");
+
+  // Initialize from localStorage
+  const savedLayout = localStorage.getItem("layout") || "layout-light";
+  html.classList.add(savedLayout);
+  switchInput.checked = savedLayout === "layout-dark";
+
+  switchInput.addEventListener("change", () => {
+    if (switchInput.checked) {
+      html.classList.remove("layout-light");
+      html.classList.add("layout-dark");
+      localStorage.setItem("layout", "layout-dark");
+    } else {
+      html.classList.remove("layout-dark");
+      html.classList.add("layout-light");
+      localStorage.setItem("layout", "layout-light");
+    }
+  });
+</script>
+

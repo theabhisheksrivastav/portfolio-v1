@@ -1,0 +1,72 @@
+<!-- Theme / Settings Icon -->
+<div class="fixed top-4 right-4 z-50">
+  <!-- Settings icon button -->
+  <button id="theme-panel-toggle" class="p-2 rounded-full bg-[var(--color-secondary)] text-[var(--color-primary)] shadow-md hover:bg-[var(--accent-primary)] transition">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M12 4v4M12 16v4M4 12h4m8 0h4M6.343 6.343l2.828 2.828M14.828 14.828l2.828 2.828M6.343 17.657l2.828-2.828M14.828 9.172l2.828-2.828"/>
+    </svg>
+  </button>
+
+  <!-- Floating modal overlay -->
+  <div id="theme-panel" class="fixed top-16 right-4 w-56 bg-[var(--color-primary)] border border-[var(--color-secondary)] rounded-lg shadow-lg hidden z-50">
+    <div class="p-2 border-b border-[var(--color-secondary)] flex justify-between items-center">
+      <h2 class="text-sm font-bold">Select Theme</h2>
+      <button id="theme-panel-close" class="hover:text-[var(--accent-primary)]">✕</button>
+    </div>
+    <div class="flex flex-col p-2 gap-2">
+      <button data-theme="theme-pikachu" class="theme-btn bg-yellow-400 text-black rounded px-2 py-1">Pikachu</button>
+      <button data-theme="theme-charizard" class="theme-btn bg-red-600 text-white rounded px-2 py-1">Charizard</button>
+      <button data-theme="theme-lucario" class="theme-btn bg-blue-600 text-white rounded px-2 py-1">Lucario</button>
+      <button data-theme="theme-caterpie" class="theme-btn bg-green-600 text-white rounded px-2 py-1">Caterpie</button>
+      <button data-theme="theme-darkrai" class="theme-btn bg-gray-900 text-white rounded px-2 py-1">Darkrai</button>
+      <button data-theme="theme-togepi" class="theme-btn bg-pink-300 text-gray-800 rounded px-2 py-1">Togepi</button>
+      <button data-theme="theme-gengar" class="theme-btn bg-purple-700 text-white rounded px-2 py-1">Gengar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const themes = [
+    "theme-pikachu",
+    "theme-charizard",
+    "theme-lucario",
+    "theme-caterpie",
+    "theme-darkrai",
+    "theme-togepi",
+    "theme-gengar",
+  ];
+
+  const html = document.documentElement;
+  const savedTheme = localStorage.getItem("theme") || "theme-pikachu";
+  html.classList.add(savedTheme);
+
+  const panel = document.getElementById("theme-panel");
+  const toggleBtn = document.getElementById("theme-panel-toggle");
+  const closeBtn = document.getElementById("theme-panel-close");
+
+  toggleBtn.addEventListener("click", () => {
+    panel.classList.toggle("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    panel.classList.add("hidden");
+  });
+
+  document.querySelectorAll(".theme-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const theme = btn.dataset.theme;
+      themes.forEach(t => html.classList.remove(t));
+      html.classList.add(theme);
+      localStorage.setItem("theme", theme);
+      panel.classList.add("hidden");
+    });
+  });
+
+  // Close if clicked outside
+  document.addEventListener("click", (e) => {
+    if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+      panel.classList.add("hidden");
+    }
+  });
+</script>
