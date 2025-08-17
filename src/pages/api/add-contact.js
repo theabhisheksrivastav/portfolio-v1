@@ -1,32 +1,22 @@
 export const prerender = false;
 
-import fs from "fs/promises";
-import path from "path";
+import postgres from "postgres";
 
-const filePath = path.resolve("data/contact.json");
+// Securely load from Vercel env
+const sql = postgres(import.meta.env.DATABASE_URL, { ssl: "require" });
 
 export async function POST({ request }) {
   try {
     const newEntry = await request.json();
-    newEntry.verified = false;
-    newEntry.timestamp = Date.now();
+    // console.log("Adding new contact entry:", newEntry);
 
-    // Ensure file exists
-    let data = [];
-    try {
-      const file = await fs.readFile(filePath, "utf-8");
-      data = JSON.parse(file);
-    } catch {
-      data = [];
-    }
+    const result = await sql`
+      insert into contacts (name, email, message, plan, created_at)
+      values (${newEntry.name}, ${newEntry.email}, ${newEntry.message}, ${newEntry.message}, now())
+      returning id
+    `;
 
-    // Append
-    data.push(newEntry);
-
-    // Save back
-    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
-
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify({ success: true, id: result[0].id }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });
