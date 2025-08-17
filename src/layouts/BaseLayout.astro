@@ -1,5 +1,5 @@
 ---
-const { title = "My Portfolio", description = "Welcome to my site" } = Astro.props;
+const { title = "Portfolio", portfolioname = "Abhishek Srivastav", role = "Software Developer", description = "Hi, I’m Abhishek Srivastav — a software developer who loves turning complex problems into clean, elegant code. Welcome to my personal playground where ideas meet execution, projects come to life, and learning never stops." } = Astro.props;
 ---
 
 <html lang="en">
@@ -7,13 +7,14 @@ const { title = "My Portfolio", description = "Welcome to my site" } = Astro.pro
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="/src/styles/global.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>{title}</title>
   </head>
   <body class="font-sans transition-colors duration-300 bg-[var(--color-primary)] text-[var(--color-secondary)]">
     
 
     <main class="flex flex-col md:flex-row">
-      <slot />
+      <slot {portfolioname} {role} {description} />
     </main>
 
   </body>

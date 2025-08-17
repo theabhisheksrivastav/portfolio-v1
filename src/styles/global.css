@@ -2,17 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 @layer base {
   /* =====================
      LAYOUT MODES
      ===================== */
   html {
     --layout-primary: #F8F9FA;   /* Offwhite */
+    --layout-accent: var(--accent-primary, #EEA73B); /* Default accent */
+        --text-primary: var(--color-secondary); /* Offwhite */
+
     --layout-secondary: #292929; /* Dark gray */
   }
 
   html.layout-dark {
     --layout-primary: #292929;   /* Dark */
+    --layout-accent: #323f4c; 
+    --text-primary: var(--theme-primary); /* Offwhite */
+
     --layout-secondary: #F8F9FA; /* Offwhite */
   }
 
@@ -21,7 +29,7 @@
      ===================== */
   html.theme-pikachu {
     --theme-primary: #EEA73B;
-    --theme-secondary: #0000004D;
+    --theme-secondary: #000000aa;
 
     --accent-img: url("./avatars/pikachu.jpeg");
   --accent-img-darkswap: url("./avatars/darkpika.png");
@@ -29,15 +37,15 @@
 
   html.theme-charizard {
     --theme-primary: #FF3B30;
-    --theme-secondary: #FF7F7F;
+    --theme-secondary: #ff9d9d;
 
     --accent-img: url("./avatars/charizard.png");
   --accent-img-darkswap: url("./avatars/darkpika.png");
   }
 
   html.theme-lucario {
-    --theme-primary: #1E40AF;
-    --theme-secondary: #60A5FA;
+    --theme-primary: #3b5ac2;
+    --theme-secondary: #7db7ffe1;
 
     
     --accent-img: url("./avatars/lukario.png");
@@ -47,14 +55,13 @@
   html.theme-caterpie {
     --theme-primary: #16A34A;
     --theme-secondary: #86EFAC;
-
   
     --accent-img: url("./avatars/caterpie.png");
   --accent-img-darkswap: url("./avatars/darkpika.png");
   }
 
   html.theme-darkrai {
-    --theme-primary: #0B0B14;
+    --theme-primary: #1f1f38;
     --theme-secondary: #8B5CF6;
 
     
@@ -72,7 +79,7 @@
   }
 
   html.theme-gengar {
-    --theme-primary: #4C1D95;
+    --theme-primary: #6a2fc2;
     --theme-secondary: #C084FC;
 
     
@@ -110,4 +117,30 @@
     background-color: var(--accent-primary);
     color: var(--color-primary);
   }
+
+  /* For webkit browsers (Chrome, Edge, Safari) */
+aside::-webkit-scrollbar {
+  width: 8px; /* width of scrollbar */
+}
+
+aside::-webkit-scrollbar-track {
+  background: transparent; /* track background */
+}
+
+aside::-webkit-scrollbar-thumb {
+  background-color: var(--theme-secondary); /* your scrollbar color */
+  border-radius: 4px; /* round the thumb */
+}
+
+aside::-webkit-scrollbar-button {
+  display: none; /* remove arrows */
+}
+
+/* For Firefox */
+aside {
+  scrollbar-width: thin; /* makes it thin */
+  scrollbar-color: var(--theme-secondary) transparent; /* thumb and track */
+}
+
+
 }
