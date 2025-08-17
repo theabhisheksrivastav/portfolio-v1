@@ -1,12 +1,23 @@
 ---
+import Hero from "../components/Hero.astro";
+import WhatIDo from "../components/WhatIDo.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Sidebar from "../components/Sidebar.astro";
-import Theme from "../components/Theme.astro";
+import Testimonials from "../components/Testimonials.astro";
+import FeaturedProjects from "../components/FeaturedProjects.astro";
+import LatestBlogs from "../components/LatestBlogs.astro";
+import Footer from "../components/Footer.astro";
 
 ---
-<BaseLayout title = "Portfolio", portfolioname = "Abhishek Srivastav", role = "Software Developer", description = "Hi, I’m Abhishek Srivastav — a software developer who loves turning complex problems into clean, elegant code. Welcome to my personal playground where ideas meet execution, projects come to life, and learning never stops.">
-  <Sidebar portfolioname = "Abhishek Srivastav", role = "Software Developer", description = "Hi, I’m Abhishek Srivastav — a software developer who loves turning complex problems into clean, elegant code. Welcome to my personal playground where ideas meet execution, projects come to life, and learning never stops."/>
-  <Theme />
-    <!-- Add more sections later: WhatIDo, Projects, Blog, etc. -->
-  <!-- </div> -->
+
+<BaseLayout title="Portfolio" portfolioname="Abhishek Srivastav" role="Software Developer" description="Hi, I’m Abhishek Srivastav — a software developer who loves turning complex problems into clean, elegant code. Welcome to my personal playground where ideas meet execution, projects come to life, and learning never stops.">
+<div class="container mx-auto px-4">
+  <Hero  />
+  <WhatIDo  />
+  <Testimonials  />
+  <FeaturedProjects  />
+  <LatestBlogs  />
+  <Footer  />
+
+</div>
 </BaseLayout>
+

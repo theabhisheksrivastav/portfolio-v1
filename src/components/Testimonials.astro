@@ -1,0 +1,89 @@
+---
+import testimonials from "../../data/testimonials.json";
+
+// Filter only verified
+const verifiedTestimonials = testimonials.filter(t => t.verified);
+---
+
+<section id="testimonials" class="py-16 px-6 md:px-20 bg-[var(--layout-background)] text-[var(--text-primary)]">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-3xl font-bold border-l-4 border-[var(--accent-primary)] pl-2">Testimonials</h2>
+      <!-- + Icon -->
+      <button 
+        class="p-2 rounded-full bg-[var(--accent-primary)] text-white hover:bg-[var(--color-primary)] transition"
+        onclick="document.getElementById('testimonial-modal').classList.remove('hidden')"
+      >
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+
+    <!-- Grid of testimonials -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      {verifiedTestimonials.map(t => (
+        <div class="p-6 bg-[var(--layout-accent)] rounded-2xl shadow-lg">
+          <p class="italic mb-4">“{t.testimonial}”</p>
+          <h3 class="font-bold">{t.name}</h3>
+          <p class="text-sm opacity-75">{t.title}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Add Testimonial Modal -->
+  <div id="testimonial-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white text-black p-8 rounded-xl w-full max-w-md relative">
+      <h3 class="text-xl font-bold mb-4">Add Testimonial</h3>
+      <form id="testimonial-form" class="flex flex-col gap-4">
+        <input type="text" name="name" placeholder="Your Name" class="border p-2 rounded" required />
+        <input type="text" name="title" placeholder="Your Title" class="border p-2 rounded" required />
+        <textarea name="testimonial" placeholder="Your Testimonial" class="border p-2 rounded" required></textarea>
+        <button type="submit" class="bg-[var(--accent-primary)] text-white px-4 py-2 rounded hover:bg-[var(--color-primary)]">
+          Submit
+        </button>
+      </form>
+      <button 
+        class="absolute top-2 right-2 text-gray-600 hover:text-black"
+        onclick="document.getElementById('testimonial-modal').classList.add('hidden')"
+      >
+        <i class="fa-solid fa-times"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Thank You Modal -->
+  <div id="thankyou-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white text-black p-8 rounded-xl w-full max-w-sm text-center relative">
+      <h3 class="text-xl font-bold mb-4">🎉 Thank You!</h3>
+      <p>Your testimonial has been submitted for verification.</p>
+      <button 
+        class="mt-6 bg-[var(--accent-primary)] text-white px-4 py-2 rounded hover:bg-[var(--color-primary)]"
+        onclick="document.getElementById('thankyou-modal').classList.add('hidden')"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("testimonial-form");
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(form).entries());
+
+      const res = await fetch("/api/add-testimonial", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        document.getElementById("testimonial-modal").classList.add("hidden");
+        document.getElementById("thankyou-modal").classList.remove("hidden");
+        form.reset();
+      } else {
+        alert("Error submitting testimonial.");
+      }
+    });
+  </script>
+</section>

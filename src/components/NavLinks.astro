@@ -1,0 +1,33 @@
+---
+// src/components/NavLinks.astro
+---
+<nav class="mt-6 flex flex-col gap-2 w-full">
+  <a href="#about" class="px-3 py-2 rounded hover:text-[var(--accent-secondary)] transition">
+    <i class="fa-solid fa-user-astronaut"></i> About Me
+  </a>
+  <a href="#portfolio" class="px-3 py-2 rounded hover:text-[var(--accent-secondary)] transition">
+    <i class="fa-solid fa-laptop-code"></i> Portfolio
+  </a>
+  <a href="#services" class="px-3 py-2 rounded hover:text-[var(--accent-secondary)] transition">
+    <i class="fa-solid fa-briefcase"></i> Services
+  </a>
+  <a href="#resume" class="px-3 py-2 rounded hover:text-[var(--accent-secondary)] transition">
+    <i class="fa-solid fa-book"></i> Resume
+  </a>
+  <a href="#blog" class="px-3 py-2 rounded hover:text-[var(--accent-secondary)] transition">
+    <i class="fa-solid fa-blog"></i> Blog
+  </a>
+  <a href="#contact" class="px-3 py-2 rounded hover:text-[var(--accent-secondary)] transition">
+    <i class="fa-solid fa-id-card"></i> Contact
+  </a>
+
+  <!-- Dark mode toggle -->
+  <div class="flex flex-col items-center mt-4 gap-4">
+    <label for="layout-switch" class="relative inline-flex items-center cursor-pointer">
+      <input type="checkbox" id="layout-switch" class="sr-only peer" />
+      <div id="switch-track" class="w-12 h-6 bg-gray-300 rounded-full peer-checked:bg-gray-800"></div>
+      <div id="switch-knob" class="absolute left-0.5 top-0.5 w-5 h-5 bg-[var(--accent-primary)] rounded-full transition-transform peer-checked:translate-x-6"></div>
+    </label>
+    <span class="text-sm text-[var(--text-primary)]">Dark Mode</span>
+  </div>
+</nav>

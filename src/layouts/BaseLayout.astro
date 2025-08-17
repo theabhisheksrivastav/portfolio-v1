@@ -1,4 +1,7 @@
 ---
+import Sidebar from "../components/Sidebar.astro";
+import Theme from "../components/Theme.astro";
+
 const { title = "Portfolio", portfolioname = "Abhishek Srivastav", role = "Software Developer", description = "Hi, I’m Abhishek Srivastav — a software developer who loves turning complex problems into clean, elegant code. Welcome to my personal playground where ideas meet execution, projects come to life, and learning never stops." } = Astro.props;
 ---
 
@@ -14,7 +17,9 @@ const { title = "Portfolio", portfolioname = "Abhishek Srivastav", role = "Softw
     
 
     <main class="flex flex-col md:flex-row">
-      <slot {portfolioname} {role} {description} />
+      <Sidebar portfolioname={portfolioname} role={role} description={description} />
+      <Theme />
+      <slot />
     </main>
 
   </body>

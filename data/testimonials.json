@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Ada Lovelace",
+    "title": "Mathematician",
+    "testimonial": "He writes code so elegant, even my algorithms blush.",
+    "verified": false
+  },
+  {
+    "name": "Elon Musk",
+    "title": "Entrepreneur",
+    "testimonial": "If I could launch a rocket as fast as he codes, Mars would already be colonized.",
+    "verified": true
+  },
+  {
+    "name": "Anonymous",
+    "title": "Mysterious Reviewer",
+    "testimonial": "Not all heroes wear capes. Some just push commits at 2 AM.",
+    "verified": true
+  },
+  {
+    "name": "Grace Hopper",
+    "title": "Computer Scientist",
+    "testimonial": "He debugs like a magician pulling rabbits out of hats.",
+    "verified": true
+  },
+  {
+    "name": "Alan Turing",
+    "title": "Mathematician and Logician",
+    "testimonial": "His code is so logical, it could solve the Enigma twice.",
+    "verified": false
+  }
+]

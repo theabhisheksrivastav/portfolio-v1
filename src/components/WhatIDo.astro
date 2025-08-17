@@ -1,0 +1,96 @@
+---
+// WhatIDo.astro
+const skills = 
+  [
+  {
+    title: "C++",
+    icon: "fa-brands fa-cuttlefish text-blue-600", // Use blue for C++ (or pick another color)
+    description: "Competitive programming experience on platforms like CodeChef; implemented algorithms and data structures efficiently."
+  },
+  {
+    title: "Python & ML",
+    icon: "fa-brands fa-python text-yellow-500", // Yellow Python logo
+    description: "Built ML projects including TF/IDF word classifier from scratch, deployed ML projects using Django and Flask."
+  },
+  {
+    title: "JavaScript (ES6+)",
+    icon: "fa-brands fa-js text-yellow-400", // JS yellow
+    description: "Built mini React from scratch, learning projects, and implemented modular, secure backend services."
+  },
+  {
+    title: "React & Next.js",
+    icon: "fa-brands fa-react text-blue-400",
+    description: "Developed front-end applications including blogs, e-commerce projects, and integrated backend APIs with proper documentation."
+  },
+  {
+    title: "Node.js & Express",
+    icon: "fa-brands fa-node-js text-green-600",
+    description: "Built full-featured social media backend with modular architecture, authentication, and security best practices."
+  },
+  {
+    title: "React Native",
+    icon: "fa-brands fa-react text-teal-500",
+    description: "Built mobile apps including an expense tracker with offline data persistence using Android ID."
+  },
+  {
+    title: "Laravel",
+    icon: "fa-brands fa-laravel text-red-600",
+    description: "Developed simple CMS projects and backend APIs using Laravel following MVC architecture."
+  },
+  {
+    title: "Django & Flask",
+    icon: "fa-brands fa-python text-green-500",
+    description: "Deployed ML projects and APIs; designed modular backend systems for various projects."
+  },
+  {
+    title: "HTML & CSS",
+    icon: "fa-brands fa-html5 text-orange-500",
+    description: "Built responsive web interfaces using semantic HTML5, modern CSS techniques, and preprocessors like Sass and LESS."
+  },
+  {
+  title: "CSS Frameworks",
+  icon: "fa-brands fa-css3-alt text-teal-500",
+  description: "Built responsive and modern UIs using Tailwind CSS and Bootstrap, leveraging utility-first design and prebuilt components for fast development."
+},
+  {
+    title: "Machine Learning & Algorithms",
+    icon: "fa-solid fa-robot text-green-600",
+    description: "Implemented ML models using TensorFlow and PyTorch; built algorithms in JavaScript and Python for NLP and classification tasks."
+  },
+  {
+    title: "Astro",
+    icon: "fa-brands fa-html5 text-violet-500",
+    description: "Built fast, modern portfolio using Astro with reusable components and theming."
+  }
+
+];
+---
+
+<section id="what-i-do" class="py-16 px-6 md:px-20 bg-[var(--layout-background)] text-[var(--text-primary)]">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6 border-l-4 border-[var(--accent-primary)] pl-2">What I do</h2>
+    <p class="mb-12 text-lg leading-relaxed">
+      I have more than 10 years' experience building software for clients all over the world. Below is a quick overview of my main technical skill sets and technologies I use. 
+      Want to find out more about my experience? Check out my 
+      <a href="/resume" class="text-[var(--accent-primary)] hover:underline">online resume</a> and 
+      <a href="/portfolio" class="text-[var(--accent-primary)] hover:underline">project portfolio</a>.
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+      {skills.map(skill => (
+        <div class="flex flex-col items-start gap-3">
+          <i class={`${skill.icon} text-4xl`}></i>
+          <h3 class="font-bold text-lg">{skill.title}</h3>
+          <p class="text-sm leading-relaxed">{skill.description}</p>
+        </div>
+      ))}
+    </div>
+    <div class="flex justify-center mt-8">
+  <a href="#contact" class="flex items-center justify-center px-6 py-3 bg-[var(--accent-primary)] text-white font-semibold rounded-lg hover:bg-[var(--color-primary)] hover:text-[var(--color-secondary)] transition gap-2">
+    <i class="fa-solid fa-briefcase text-xl"></i> 
+    Services & Pricing
+  </a>
+</div>
+
+  </div>
+</section>
