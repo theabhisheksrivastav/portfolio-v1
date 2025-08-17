@@ -397,13 +397,16 @@ const { portfolioname, description } = Astro.props;
       if (e.target === modal) modal.classList.add("hidden");
     });
   }
+  
+      const backUrl = import.meta.env.BACK_URL || "https://splitease-00za.onrender.com";
 
+  
   if (form instanceof HTMLFormElement) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
       try {
-        const res = await fetch("/api/add-contact", {
+        const res = await fetch(`${backUrl}/contact`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),

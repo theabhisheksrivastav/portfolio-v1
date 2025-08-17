@@ -92,11 +92,11 @@
 
   <script>
     const grid = document.getElementById("testimonials-grid");
-
+    const backUrl = import.meta.env.BACK_URL || "https://splitease-00za.onrender.com";
     // Fetch verified testimonials on page load
     async function loadTestimonials() {
       try {
-        const res = await fetch("/api/add-testimonial"); // GET request
+        const res = await fetch( `${backUrl}/testimonial`); // GET request
         if (!res.ok) throw new Error("Failed to fetch testimonials");
         const testimonials = await res.json();
 
@@ -125,7 +125,7 @@
       e.preventDefault();
       const data = Object.fromEntries(new FormData(form).entries());
 
-      const res = await fetch("/api/add-testimonial", {
+      const res = await fetch(`${backUrl}/testimonial`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
