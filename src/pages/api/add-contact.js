@@ -3,7 +3,7 @@ export const prerender = false;
 import postgres from "postgres";
 
 // Securely load from Vercel env
-const sql = postgres(import.meta.env.DATABASE_URL, { ssl: "require" });
+const sql = postgres(import.meta.env.DATABASE_URL, { ssl: { rejectUnauthorized: false } });
 
 export async function POST({ request }) {
   try {
