@@ -2,7 +2,7 @@ import postgres from 'postgres';
 export { renderers } from '../../renderers.mjs';
 
 const prerender = false;
-const sql = postgres("postgresql://postgres:rvPP8+qAB8DiiHf@db.ivwxbjviwbjhrqnfjlva.supabase.co:5432/postgres", { ssl: "require" });
+const sql = postgres("postgresql://postgres:rvPP8+qAB8DiiHf@db.ivwxbjviwbjhrqnfjlva.supabase.co:5432/postgres", { ssl: { rejectUnauthorized: false } });
 async function POST({ request }) {
   try {
     const newEntry = await request.json();
